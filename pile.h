@@ -16,10 +16,10 @@ typedef struct {
 } pile_t;
 
 pile_t * InitPile(int TailleMax);
-int EstVide(pile_t * pile);
+int PILEEstVide(pile_t * pile);
 int PILEEstPleine(pile_t * pile);
 int PILEempiler(pile_t * pile, element_pile val);
-int PILEdefiler(pile_t * pile, element_pile * res);
+int PILEdepiler(pile_t * pile, element_pile * res);
 int PILEsommet(pile_t * pile, element_pile * res);
 void PILEliberer(pile_t * pile);
 

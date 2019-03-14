@@ -31,7 +31,7 @@ int PILEempiler(pile_t * pile, element_pile val) {
 	return ok;
 }
 
-int PILEdefiler(pile_t * pile, element_pile * res) {
+int PILEdepiler(pile_t * pile, element_pile * res) {
 	int ok = !PILEEstVide(pile);
 	if(ok) {
 		pile->RangSommet--;

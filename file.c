@@ -12,7 +12,7 @@ file_t * InitFile(int TailleMax) {
 			file->TailleMax = TailleMax;
 			file->compteur = 0;
 			file->RangPremier = 0;
-			file->RangDernier = TailleMax - 1;
+			file->RangDernier = 0;
 		}
 	}
 	return file;
@@ -30,7 +30,8 @@ int FILEentree(file_t * file, element_file val) {
 	int ok = !FILEEstPleine(file);
 	if(ok) {
 		file->donnees[file->RangDernier] = val;
-		file->RangDernier++;
+		file->RangDernier = (file->RangDernier + 1) % file->TailleMax;
+		file->compteur++;
 	}
 	return ok;
 }
@@ -38,8 +39,9 @@ int FILEentree(file_t * file, element_file val) {
 int FILEsortie(file_t * file, element_file * res) {
 	int ok = !FILEEstVide(file);
 	if(ok) {
-		file->RangDernier--;
-		*res = file->donnees[file->RangDernier];
+		*res = file->donnees[file->RangPremier];
+		file->RangPremier = (file->RangPremier + 1) % file->TailleMax;
+		file->compteur--;
 	}
 	return ok;
 }
