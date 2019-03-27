@@ -4,7 +4,7 @@ pile_t * InitPile(int TailleMax) {
 	pile_t * pile = (pile_t *) malloc(sizeof(pile_t));
 	if(pile != NULL) {
 		pile->TailleMax = TailleMax;
-		pile->RangSommet = -1;
+		pile->RangSommet = 0;
 		pile->donnees = (element_pile *) malloc(TailleMax * sizeof(element_pile));
 		if(pile->donnees == NULL) {
 			free(pile);
@@ -15,7 +15,7 @@ pile_t * InitPile(int TailleMax) {
 }
 
 int PILEEstVide(pile_t * pile) {
-	return pile->RangSommet == -1;
+	return pile->RangSommet == 0;
 }
 
 int PILEEstPleine(pile_t * pile) {

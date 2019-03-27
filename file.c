@@ -3,7 +3,7 @@
 file_t * InitFile(int TailleMax) {
 	file_t * file = (file_t *) malloc(sizeof(file_t));
 	if(file != NULL) {
-		file->donnees = (element_file *) malloc(sizeof(element_file));
+		file->donnees = (element_file *) malloc(TailleMax * sizeof(element_file));
 		if(file->donnees == NULL) {
 			free(file);
 			file = NULL;
@@ -42,6 +42,14 @@ int FILEsortie(file_t * file, element_file * res) {
 		*res = file->donnees[file->RangPremier];
 		file->RangPremier = (file->RangPremier + 1) % file->TailleMax;
 		file->compteur--;
+	}
+	return ok;
+}
+
+int FILEsommet(file_t * file, element_file * res) {
+	int ok = !FILEEstVide(file);
+	if(ok) {
+		*res = file->donnees[file->RangPremier];
 	}
 	return ok;
 }
